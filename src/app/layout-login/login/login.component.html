@@ -1,38 +1,68 @@
-<div class="wrapper">
-    <form class="login">
-        <p class="title">Log in</p>
-        <input type="text" placeholder="Username" autofocus />
-        <i class="fa fa-user"></i>
-        <input type="password" placeholder="Password" />
-        <i class="fa fa-key"></i>
-        <a href="#">Forgot your password?</a>
-        <br>
-        <a href="/signup">Signup?</a>
-        <button>
-            <i class="spinner"></i>
-            <span class="state">Log in</span>
-        </button>
-    </form>
-    <!-- <footer><a target="blank" href="http://boudra.me/">boudra.me</a></footer> -->
-    <script>
-        var working = false;
-        $('.login').on('submit', function (e) {
-            e.preventDefault();
-            if (working) return;
-            working = true;
-            var $this = $(this),
-                $state = $this.find('button > .state');
-            $this.addClass('loading');
-            $state.html('Authenticating');
-            setTimeout(function () {
-                $this.addClass('ok');
-                $state.html('Welcome back!');
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <title>WebssiteShopFashion</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <form class="login">
+            <p class="title">Log in</p>
+            <form [formGroup]="loginForm">
+                <div>
+                    <input formControlName="username" type="text" placeholder="Username" autofocus />
+                    <i class="fa fa-user"></i>
+                    <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                        class="text-danger" style="font-size: 14px; font-weight: bold;">Username is required</small>
+                </div>
+                <div class="password-input">
+                    <input formControlName="password" [type]="type" placeholder="Password" />
+                    <i class="fa fa-key"></i>
+                    <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                    <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                        class="text-danger" style="font-size: 14px; font-weight: bold;">Password is required</small>
+                </div>
+
+                <a href="/forgot">Forgot your password?</a>
+                <br>
+                <a href="/signup">Signup?</a>
+                <br>
+                <a href="/home" class="back-link">Back to Home</a>
+                <button (click)="onSumbit()">
+                    <i class="spinner"></i>
+                    <span class="state">Log in</span>
+                </button>
+            </form>
+        </form>
+        <script>
+            var working = false;
+            $('.login').on('submit', function (e) {
+                e.preventDefault();
+                if (working) return;
+                working = true;
+                var $this = $(this),
+                    $state = $this.find('button > .state');
+                $this.addClass('loading');
+                $state.html('Authenticating');
                 setTimeout(function () {
-                    $state.html('Log in');
-                    $this.removeClass('ok loading');
-                    working = false;
-                }, 4000);
-            }, 3000);
-        });
-    </script>
-</div>
+                    $this.addClass('ok');
+                    $state.html('Welcome back!');
+                    setTimeout(function () {
+                        $state.html('Log in');
+                        $this.removeClass('ok loading');
+                        working = false;
+                    }, 4000);
+                }, 3000);
+            });
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,23 +1,91 @@
-<html>
-    <head>
+<!doctype html>
+<html lang="vi">
 
-    </head>
-    <body>
-        <div class="wrapper">
-            <form class="login">
-              <p class="title">Log in</p>
-              <input type="text" placeholder="Username" autofocus/>
-              <i class="fa fa-user"></i>
-              <input type="password" placeholder="Password" />
-              <i class="fa fa-key"></i>
-              <a href="#">Forgot your password?</a>
-              <button>
+<head>
+    <meta charset="utf-8">
+    <title>WebssiteShopFashion</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <form class="login">
+        <p class="title">Sign Up</p>
+        <form [formGroup]="signUp">
+            <div>
+                <input formControlName="name" type="text" placeholder="Name" autofocus />
+                <i class="fa fa-user"></i>
+                <small *ngIf="signUp.controls['name'].dirty && signUp.hasError('required','name')" class="text-danger"
+                    style="font-size: 14px; font-weight: bold;">Name is required</small>
+            </div>
+            <div>
+                <input formControlName="username" type="text" placeholder="Username" autofocus />
+                <i class="fa fa-user"></i>
+                <small *ngIf="signUp.controls['username'].dirty && signUp.hasError('required','username')"
+                    class="text-danger" style="font-size: 14px; font-weight: bold;">Username is required</small>
+            </div>
+            <div>
+                <input formControlName="email" type="text" placeholder="Email" autofocus />
+                <i class="fa fa-envelope-o"></i>
+                <small *ngIf="signUp.controls['email'].dirty && signUp.hasError('required','email')" class="text-danger"
+                    style="font-size: 14px; font-weight: bold;">Email is required</small>
+            </div>
+            <div>
+                <input formControlName="phone" type="text" placeholder="Phone" autofocus />
+                <i class="fa fa-envelope-o"></i>
+                <small *ngIf="signUp.controls['phone'].dirty && signUp.hasError('required','phone')" class="text-danger"
+                    style="font-size: 14px; font-weight: bold;">Phone is required</small>
+            </div>
+            <div class="password-input">
+                <input formControlName="password" [type]="type" placeholder="Password" />
+                <i class="fa fa-key"></i>
+                <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                <small *ngIf="signUp.controls['password'].dirty && signUp.hasError('required','password')"
+                    class="text-danger" style="font-size: 14px; font-weight: bold;">Password is required</small>
+            </div>
+            <div class="password-input">
+                <input formControlName="confirmPassword" [type]="type" placeholder="Confirm Password" />
+                <i class="fa fa-key"></i>
+                <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                <small *ngIf="signUp.controls['confirmPassword'].dirty && signUp.hasError('required','confirmPassword')"
+                    class="text-danger" style="font-size: 14px; font-weight: bold;">Confirm Password is required</small>
+                    <br>
+                <small *ngIf="!checkConfirmPassword()" class="text-danger"
+                    style="font-size: 14px; font-weight: bold;">Passwords do not match</small>
+            </div>
+            <a href="/login">Login?</a> <br>
+            <a href="/home" class="back-link">Back to Home</a>
+            <button (click)="onSubmit()">
                 <i class="spinner"></i>
-                <span class="state">Log in</span>
-              </button>
-            </form>
-            <footer><a target="blank" href="http://boudra.me/">boudra.me</a></footer>
-          </div>
-          
-    </body>
+                <span class="state">Sign up</span>
+            </button>
+        </form>
+    </form>
+    <script>
+        var working = false;
+        $('.login').on('submit', function (e) {
+            e.preventDefault();
+            if (working) return;
+            working = true;
+            var $this = $(this),
+                $state = $this.find('button > .state');
+            $this.addClass('loading');
+            $state.html('Authenticating');
+            setTimeout(function () {
+                $this.addClass('ok');
+                $state.html('Welcome back!');
+                setTimeout(function () {
+                    $state.html('Sign up');
+                    $this.removeClass('ok loading');
+                    working = false;
+                }, 4000);
+            }, 3000);
+        });
+    </script>
+</div>
+</body>
+
 </html>
