@@ -14,4 +14,8 @@ export class HomeService {
   public getListProduct(payload: any): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/getlistProduct`, payload)
   }
+
+  public getBestSeller(payload: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/GetlistProductSaleTurn`, payload)
+  }
 }

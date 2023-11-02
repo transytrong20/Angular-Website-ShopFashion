@@ -9,6 +9,7 @@ import { HomeService } from 'src/app/services/home/home.service';
 export class HomeComponent {
 
   product!: any;
+  seller!: any;
 
   constructor(
     private productService: HomeService
@@ -23,12 +24,12 @@ export class HomeComponent {
       }
     );
 
-    // const seller = {};
-    // this.prductService.getBestSeller(seller).subscribe(
-    //   (data) => {
-    //     this.seller = data;
-    //     console.log('GetBestSeller', data);
-    //   }
-    // );
+    const seller = {};
+    this.productService.getBestSeller(seller).subscribe(
+      (data) => {
+        this.seller = data;
+        console.log('GetBestSeller', data);
+      }
+    );
   }
 }

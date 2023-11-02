@@ -34,7 +34,7 @@ export class LoginComponent {
         next:(res)=>{
           alert(res.message);
           this.loginForm.reset();
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
         },
         error:(err)=>{
           alert(err?.error.message)

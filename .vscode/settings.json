@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/af40d2d2-81b9-4ce5-9bd2-4cdc330db609/resourceGroups/webssite-shop-fashion_group/providers/Microsoft.Web/sites/webssite-shop-fashion",
+    "appService.deploySubpath": "dist\\webssite-shop-fashion"
+}

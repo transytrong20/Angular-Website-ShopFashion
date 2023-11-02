@@ -101,7 +101,7 @@
 						</a>
 
 						<a href="cart.html" class="cart">
-							<span class="item-in-cart">2</span>
+							<!-- <span class="item-in-cart"></span> -->
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart" fill="currentColor"
 								xmlns="http://www.w3.org/2000/svg">
 								<path fill-rule="evenodd"
@@ -194,45 +194,39 @@
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-4" *ngFor="let product of product ">
+				<div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-4" *ngFor="let products of product ">
 					<div class="product-item">
 						<a href="shop-single.html" class="product-img">
 
-							<ng-container *ngIf="product.new === true">
+							<ng-container *ngIf="products.new === true">
 								<div class="label new top-right">
 									<div class='content'>New</div>
 								</div>
 							</ng-container>
-							<ng-container *ngIf="product.new === false">
-								<!-- <div class="label new top-right">
-									<div class='content'>New</div>
-								</div> -->
+							<ng-container *ngIf="products.new === false">
 							</ng-container>
 
-							<ng-container *ngIf="product.sale === true">
+							<ng-container *ngIf="products.sale === true">
 								<div class="label sale top-right second">
 									<div class='content'>Sale</div>
 								</div>
 							</ng-container>
 
-							<ng-container *ngIf="product.sale === false">
-								<!-- <div class="label sale top-right second">
-									<div class='content'>Sale</div>
-								</div> -->
+							<ng-container *ngIf="products.sale === false">
 							</ng-container>
 
-							<img [src]="'https://shop-webapp-api.azurewebsites.net' + product.image"
-								alt="{{ product.name }}" class="img-fluid">
+							<img [src]="'https://shop-webapp-api.azurewebsites.net' + products.image"
+								alt="{{ products.name }}" class="img-fluid">
 						</a>
-						<h3 class="title"><a href="#">Dark Jacket</a></h3>
-						<ng-container *ngIf="product.discount === 0">
+						<h3 class="title"><a href="#">{{products.name}}</a></h3>
+						<ng-container *ngIf="products.discount === 0">
 							<div class="price">
-								<span>{{ product.price - product.discount | currency:'VND':'symbol':'1.0-0' }}</span>
+								<span>{{ products.price - products.discount | currency:'VND':'symbol':'1.0-0' }}</span>
 							</div>
 						</ng-container>
-						<ng-container *ngIf="product.discount >0">
-							<del>{{ product.price | currency:'VND':'symbol':'1.0-0' }}</del> &mdash; <span>{{
-								product.price - product.discount | currency:'VND':'symbol':'1.0-0' }}</span>
+						<ng-container *ngIf="products.discount >0">
+							<del>{{ products.price | currency:'VND':'symbol':'1.0-0' }}</del> &mdash; <span>{{
+								products.price - products.discount | currency:'VND':'symbol':'1.0-0' }}</span>
 						</ng-container>
 					</div>
 				</div>
@@ -258,12 +252,12 @@
 	</div>
 
 	<div class="untree_co-section">
-		<div class="container">
+		<div class="container" >
 			<div class="row mb-5 align-items-center">
 				<div class="col-md-6">
 					<h2 class="h3">Popular Items</h2>
 				</div>
-				<div class="col-sm-6 carousel-nav text-sm-right">
+				<!-- <div class="col-sm-6 carousel-nav text-sm-right">
 					<a href="#" class="prev js-custom-prev-v2">
 						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle"
 							fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -286,79 +280,45 @@
 								d="M4.5 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
 						</svg>
 					</a>
-				</div>
-			</div> <!-- /.heading -->
-			<div class="owl-3-slider owl-carousel">
-				<div class="item">
+				</div> -->
+			</div> 
+			<!-- /.heading -->
+			<div class="owl-3-slider owl-carousel"  >
+				<div class="item"*ngFor="let items of seller ">
 					<div class="product-item">
 						<a href="shop-single.html" class="product-img">
-							<div class="label sale top-right">
-								<div class='content'>Sale</div>
-							</div>
-							<img src="https://shop-webapp-api.azurewebsites.net/files/cdn/images/products/watch-1-min.jpg"
-								alt="Image" class="img-fluid">
+							<ng-container *ngIf="items.new === true">
+								<div class="label new top-right">
+									<div class='content'>New</div>
+								</div>
+							</ng-container>
+							<ng-container *ngIf="items.new === false">
+							</ng-container>
+
+							<ng-container *ngIf="items.sale === true">
+								<div class="label sale top-right second">
+									<div class='content'>Sale</div>
+								</div>
+							</ng-container>
+
+							<ng-container *ngIf="items.sale === false">
+							</ng-container>
+
+							<img [src]="'https://shop-webapp-api.azurewebsites.net' + items.image"
+								alt="{{ items.name }}" class="img-fluid">
 						</a>
-						<h3 class="title"><a href="#">The Murray</a></h3>
-						<div class="price">
-							<del>£99.00</del> &mdash; <span>£69.00</span>
-						</div>
-					</div>
-				</div> <!-- /.item -->
-
-
-				<div class="item">
-					<div class="product-item">
-						<a href="shop-single.html" class="product-img">
-
-							<div class="label new top-right">
-								<div class='content'>New</div>
+						<h3 class="title"><a href="#">{{items.name}}</a></h3>
+						<ng-container *ngIf="items.discount === 0">
+							<div class="price">
+								<span>{{ items.price - items.discount | currency:'VND':'symbol':'1.0-0' }}</span>
 							</div>
-
-
-							<img src="https://shop-webapp-api.azurewebsites.net/files/cdn/images/products/jacket-1-min.jpg"
-								alt="Image" class="img-fluid">
-						</a>
-						<h3 class="title"><a href="#">Dark Jacket</a></h3>
-						<div class="price">
-							<span>£69.00</span>
-						</div>
+						</ng-container>
+						<ng-container *ngIf="items.discount >0">
+							<del>{{ items.price | currency:'VND':'symbol':'1.0-0' }}</del> &mdash; <span>{{
+								items.price - items.discount | currency:'VND':'symbol':'1.0-0' }}</span>
+						</ng-container>
 					</div>
-				</div> <!-- /.item -->
-
-
-				<div class="item">
-					<div class="product-item">
-						<a href="shop-single.html" class="product-img">
-							<div class="label new top-right">
-								<div class='content'>New</div>
-							</div>
-
-							<div class="label sale top-right second">
-								<div class='content'>Sale</div>
-							</div>
-							<img src="https://shop-webapp-api.azurewebsites.net/files/cdn/images/products/bottoms-1-min.jpg"
-								alt="Image" class="img-fluid">
-						</a>
-						<h3 class="title"><a href="#">Chino Bottoms</a></h3>
-						<div class="price">
-							<del>£99.00</del> &mdash; <span>£69.00</span>
-						</div>
-					</div>
-				</div> <!-- /.item -->
-
-				<div class="item">
-					<div class="product-item">
-						<a href="shop-single.html" class="product-img">
-							<img src="https://shop-webapp-api.azurewebsites.net/files/cdn/images/products/sock-1-min.jpg"
-								alt="Image" class="img-fluid">
-						</a>
-						<h3 class="title"><a href="#">The Modern Sock</a></h3>
-						<div class="price">
-							<span>£29.00</span>
-						</div>
-					</div>
-				</div> <!-- /.item -->
-
+				</div> 
 			</div>
 		</div> <!-- /.container -->
 	</div> <!-- /.untree_co-section -->
