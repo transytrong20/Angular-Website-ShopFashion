@@ -3,8 +3,6 @@ $primary: #2196F3;
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
-  // background: url("../../../assets/layout-login/choose-2.jpg") 50% fixed;
-  // background-size: cover;
 }
 
 @keyframes spinner {
@@ -23,9 +21,7 @@ body {
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  // padding: 16%;
-  // background: rgba(darken($primary,40%), 0.85);
-  background: url("../../../assets/layout-login/bg_1.png");
+  background: url("https://shop-webapp-api.azurewebsites.net/files/cdn/css-login/bg_1.png");
 }
 
 
