@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ShopService {
 
-  private baseUrl: string = 'https://shop-webapp-api.azurewebsites.net/shop/data/category/';
+  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/category/';
 
   constructor(
     private http: HttpClient

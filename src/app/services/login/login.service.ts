@@ -6,9 +6,9 @@ import { HttpClient } from "@angular/common/http"
 })
 export class LoginService {
 
-  private baseUrl: string = 'https://shop-webapp-api.azurewebsites.net/shop/data/'
-  //https://shop-webapp-api.azurewebsites.net/shop/data/auth/login
-  //https://shop-webapp-api.azurewebsites.net/shop/data/user/CreateUser
+  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/'
+  //https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/auth/login
+  //https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/user/CreateUser
 
   constructor(
     private http: HttpClient) { }
