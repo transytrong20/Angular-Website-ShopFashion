@@ -7,10 +7,12 @@ import { LoginComponent } from './layout-login/login/login.component';
 import { SignupComponent } from './layout-login/signup/signup.component';
 import { ForgotComponent } from './layout-login/forgot/forgot.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './layout-user/home/home.component';
 import { ShopComponent } from './layout-user/shop/shop.component';
-import { NgxPaginationModule} from 'ngx-pagination'
+import { NgxPaginationModule} from 'ngx-pagination';
+import { NgToastModule } from 'ng-angular-popup';
+import { TokenInterceptor } from './Interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,14 @@ import { NgxPaginationModule} from 'ngx-pagination'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgToastModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
