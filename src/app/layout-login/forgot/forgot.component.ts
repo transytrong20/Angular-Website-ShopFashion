@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login/login.service';
+import { NgToastService } from 'ng-angular-popup';
+import { ResetPasswordService } from 'src/app/services/resetPassword/reset-password.service';
 
 @Component({
   selector: 'app-forgot',
@@ -9,12 +10,15 @@ import { LoginService } from 'src/app/services/login/login.service';
   styleUrls: ['./forgot.component.scss']
 })
 export class ForgotComponent {
-  forgotForm!: FormGroup
+  public forgotForm!: FormGroup
+  public resetPasswordEmail!: string
+  public isValidEmail!: boolean
 
   constructor(
     private fb: FormBuilder,
-    private auth: LoginService,
-    private router: Router
+    private toast: NgToastService,
+    private router: Router,
+    private reset: ResetPasswordService
   ) { }
 
   ngOnInit(): void {
@@ -23,36 +27,34 @@ export class ForgotComponent {
     })
   }
 
-  onSumbit() {
-    if (this.forgotForm.valid) {
-      console.log(this.forgotForm.value)
-      this.auth.login(this.forgotForm.value).subscribe({
-        next:(res)=>{
-          alert(res.message);
-          this.forgotForm.reset();
-          this.router.navigate(['']);
-        },
-        error:(err)=>{
-          alert(err?.error.message)
-        }
-      })
-    }
-    else {
-      console.log("Form is not valid")
-      this.validateAllFormFileds(this.forgotForm)
-      alert("Your form is invalid")
-    }
+  checkValidEmail(event: string) {
+    const value = event;
+    const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    this.isValidEmail = pattern.test(value)
+    return this.isValidEmail
   }
 
-  private validateAllFormFileds(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(filed => {
-      const control = formGroup.get(filed)
-      if (control instanceof FormControl) {
-        control.markAsDirty({ onlySelf: true })
-      }
-      else if (control instanceof FormGroup) {
-        this.validateAllFormFileds(control)
-      }
-    })
+  confirmToSend() {
+    if (this.checkValidEmail(this.resetPasswordEmail)) {
+      this.reset.sendResetPasswordLink(this.resetPasswordEmail).subscribe({
+        next: (res) => {
+          this.toast.success({
+            detail: 'Succes',
+            summary: 'Reset Succes',
+            duration: 500
+          });
+          console.log(this.resetPasswordEmail);
+          this.resetPasswordEmail = ""
+          this.router.navigate(['home'])
+        },
+        error: (err) => {
+          this.toast.error({
+            detail: 'ERROR',
+            summary: 'Something went wrong!',
+            duration: 500
+          });
+        },
+      })
+    }
   }
 }

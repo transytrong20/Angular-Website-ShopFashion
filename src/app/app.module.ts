@@ -13,6 +13,12 @@ import { ShopComponent } from './layout-user/shop/shop.component';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { NgToastModule } from 'ng-angular-popup';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { NavbarHomeComponent } from './Layout/navbar-home/navbar-home.component';
+import { NavbarDashboardComponent } from './Layout/navbar-dashboard/navbar-dashboard.component';
+import { FooterHomeComponent } from './Layout/footer-home/footer-home.component';
+import { FooterDashboardComponent } from './Layout/footer-dashboard/footer-dashboard.component';
+import { NavbarLoginComponent } from './Layout/navbar-login/navbar-login.component';
+import { ResetComponent } from './layout-login/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     SignupComponent,
     ForgotComponent,
     HomeComponent,
-    ShopComponent
+    ShopComponent,
+    NavbarHomeComponent,
+    NavbarDashboardComponent,
+    FooterHomeComponent,
+    FooterDashboardComponent,
+    NavbarLoginComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,

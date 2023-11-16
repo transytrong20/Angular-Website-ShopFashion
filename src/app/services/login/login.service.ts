@@ -61,6 +61,7 @@ export class LoginService {
 
   signOut(){
     localStorage.clear();
+    // window.location.reload();
     this.router.navigate(['home'])
   }
 

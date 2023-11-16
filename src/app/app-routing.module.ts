@@ -6,13 +6,16 @@ import { ForgotComponent } from './layout-login/forgot/forgot.component';
 import { HomeComponent } from './layout-user/home/home.component';
 import { ShopComponent } from './layout-user/shop/shop.component';
 import { AuthGuard } from './services/guards/auth.guard';
+import { ResetComponent } from './layout-login/reset/reset.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'home', component: HomeComponent},
   {path:'shop', component: ShopComponent},
+  {path:'shop/:id', component: ShopComponent},
   {path:'signup', component: SignupComponent},
   {path:'forgot', component: ForgotComponent},
+  {path:'reset', component: ResetComponent},
   {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'**', redirectTo:'home', pathMatch:'full'},
 ];
