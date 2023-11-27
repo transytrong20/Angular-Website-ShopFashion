@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PangingCategoryModel } from 'src/app/Models/PangingCategoryModel';
+import { PangingCategoryModel } from 'src/app/Models/Shop-Service-Model';
 import { ProductTypeModel } from 'src/app/Models/ProductTypeModel';
 import { ShopService } from 'src/app/services/shop/shop.service';
 
@@ -26,8 +26,21 @@ export class ShopComponent implements OnInit {
       }
     );
 
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.categoryId = params.get('id') || '' ;
+      this.getProductDetails();
+    });
+
     
     this.pangingObj.PageIndex = 1
+    this.shopService.allProduct(this.pangingObj).subscribe(
+      (response: { data: ProductTypeModel[] }) => {
+        this.listProduct = response.data;
+        console.log('Product', this.listProduct);
+      }
+    )
+  }
+  getProductDetails() : void {
     this.shopService.allProduct(this.pangingObj).subscribe(
       (response: { data: ProductTypeModel[] }) => {
         this.listProduct = response.data;

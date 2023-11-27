@@ -19,6 +19,8 @@ import { FooterHomeComponent } from './Layout/footer-home/footer-home.component'
 import { FooterDashboardComponent } from './Layout/footer-dashboard/footer-dashboard.component';
 import { NavbarLoginComponent } from './Layout/navbar-login/navbar-login.component';
 import { ResetComponent } from './layout-login/reset/reset.component';
+import { DetailComponent } from './layout-user/detail/detail.component';
+import { NavbarDetailComponent } from './Layout/navbar-detail/navbar-detail.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ResetComponent } from './layout-login/reset/reset.component';
     FooterHomeComponent,
     FooterDashboardComponent,
     NavbarLoginComponent,
-    ResetComponent
+    ResetComponent,
+    DetailComponent,
+    NavbarDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -75,7 +75,7 @@
 		<div class="row">
 			<div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-4" *ngFor="let products of product ">
 				<div class="product-item">
-					<a href="shop-single.html" class="product-img">
+					<a [routerLink]="['/detail', products.id]" class="product-img">
 
 						<ng-container *ngIf="products.new === true">
 							<div class="label new top-right">
@@ -93,10 +93,10 @@
 						<ng-container *ngIf="products.sale === false">
 						</ng-container>
 
-						<img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + products.image"
-							alt="{{ products.name }}" class="img-fluid">
+						<a [routerLink]="['/detail', products.id]"><img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + products.image"
+							alt="{{ products.name }}" class="img-fluid"></a>
 					</a>
-					<h3 class="title"><a href="#">{{products.name}}</a></h3>
+					<h3 class="title"><a [routerLink]="['/detail', products.id]">{{products.name}}</a></h3>
 					<ng-container *ngIf="products.discount === 0">
 						<div class="price">
 							<span>{{ products.price - products.discount | currency:'VND':'symbol':'1.0-0' }}</span>
@@ -137,10 +137,11 @@
 			</div>
 		</div>
 		<!-- /.heading -->
-		<div class="owl-3-slider owl-carousel">
-			<div class="item" *ngFor="let items of seller ">
+		<div class="row">
+			<div class="col-6 col-sm-6 col-md-6 mb-4 col-lg-4" *ngFor="let items of seller">
 				<div class="product-item">
-					<a href="shop-single.html" class="product-img">
+					<a [routerLink]="['/detail', items.id]" class="product-img">
+
 						<ng-container *ngIf="items.new === true">
 							<div class="label new top-right">
 								<div class='content'>New</div>
@@ -154,14 +155,13 @@
 								<div class='content'>Sale</div>
 							</div>
 						</ng-container>
-
 						<ng-container *ngIf="items.sale === false">
 						</ng-container>
 
-						<img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + items.image"
-							alt="{{ items.name }}" class="img-fluid">
+						<a [routerLink]="['/detail', items.id]"><img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + items.image"
+							alt="{{ items.name }}" class="img-fluid"></a>
 					</a>
-					<h3 class="title"><a href="#">{{items.name}}</a></h3>
+					<h3 class="title"><a [routerLink]="['/detail', items.id]">{{items.name}}</a></h3>
 					<ng-container *ngIf="items.discount === 0">
 						<div class="price">
 							<span>{{ items.price - items.discount | currency:'VND':'symbol':'1.0-0' }}</span>

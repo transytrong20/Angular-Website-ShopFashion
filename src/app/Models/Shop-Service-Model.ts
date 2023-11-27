@@ -7,3 +7,7 @@ export class PangingCategoryModel {
     public SortBy: string = ""
     public Direction: string = 'desc'
 }
+
+export class ShopProductModel{
+    public static ProductId: string = ''
+}

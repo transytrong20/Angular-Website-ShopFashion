@@ -1,43 +1,38 @@
 import { Component } from '@angular/core';
-import { HomeService } from 'src/app/services/home/home.service';
+import { ActivatedRoute } from '@angular/router';
 import { ScriptLoaderService } from 'src/app/services/javascript/script-loader.service';
+import { ShopService } from 'src/app/services/shop/shop.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss']
 })
-export class HomeComponent {
-
-  product!: any;
-  seller!: any;
+export class DetailComponent {
+  detailProduct: any;
+  productId!: string;
+  categoryId!: string;
+  product: any;
+  similarProduct: any;
 
   constructor(
-    private productService: HomeService,
-    private scriptLoaderService: ScriptLoaderService
+    private route: ActivatedRoute,
+    private shopService: ShopService,
+    private scriptLoaderService: ScriptLoaderService,
   ) { }
 
-  public ngOnInit() {
-    const product = {};
-    this.productService.getListProduct(product).subscribe(
-      (data) => {
-        this.product = data;
-        console.log('GetListProduct', data);
-      }
-    );
-
-    const seller = {};
-    this.productService.getBestSeller(seller).subscribe(
-      (data) => {
-        this.seller = data;
-        console.log('GetBestSeller', data);
-      }
-    );
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.productId = params.get('id') || '' ;
+      this.getProductDetails();
+    });
     
+
     const scriptUrls = [
-      // 'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery-3.4.1.min.js',
+      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/detail/js/vendor/jquery-3.2.1.min.js',
+      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/detail/js/bootstrap.min.js',
+      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/detail/js/main.js',
       'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/popper.min.js',
-      // 'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/bootstrap.min.js',
       'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/owl.carousel.min.js',
       'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery.animateNumber.min.js',
       'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery.waypoints.min.js',
@@ -47,15 +42,21 @@ export class HomeComponent {
       'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/custom.js'
     ];
     this.scriptLoaderService.loadScripts(scriptUrls).then(() => {
-      // Scripts have been loaded and executed.
-      // You can use the functionality provided by the scripts here.
       this.runScriptFunction();
     }).catch((error) => {
       console.error('Error loading scripts:', error);
     });
+
+    
   }
+  
   runScriptFunction() {
-    // Call functions or perform actions from the loaded script
     console.log('Script function executed.');
+  }
+
+  getProductDetails() : void {
+    this.shopService.ProductById(this.productId).subscribe(data => {
+      this.detailProduct = data;
+    });
   }
 }
