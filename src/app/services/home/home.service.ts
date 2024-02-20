@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/product'
+  private baseUrl: string = 'https://localhost:7159/shop/data/product'
   // private baseUrl: string = 'https://localhost:7159/shop/data/product'
   constructor(private http: HttpClient) { }
 

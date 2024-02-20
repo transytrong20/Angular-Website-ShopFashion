@@ -6,7 +6,7 @@ import { ResetPasswordModel } from 'src/app/Models/ResetPasswordModel';
   providedIn: 'root'
 })
 export class ResetPasswordService {
-  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/'
+  private baseUrl: string = 'https://localhost:7159/shop/data/'
 
   constructor(private http: HttpClient) { }
 

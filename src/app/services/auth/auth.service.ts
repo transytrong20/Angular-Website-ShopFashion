@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/';
+  private baseUrl: string = 'https://localhost:7159/shop/data/';
   private userPayload: any;
   constructor(private http: HttpClient, private router: Router) {
     this.userPayload = this.decodedToken();

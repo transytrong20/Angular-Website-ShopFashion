@@ -33,29 +33,25 @@ export class HomeComponent {
         console.log('GetBestSeller', data);
       }
     );
-    
-    const scriptUrls = [
-      // 'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery-3.4.1.min.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/popper.min.js',
-      // 'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/bootstrap.min.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/owl.carousel.min.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery.animateNumber.min.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery.waypoints.min.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery.fancybox.min.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/jquery.sticky.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/aos.js',
-      'https://aspnetcore6-api-shopfashion.azurewebsites.net/files/cdn/js/custom.js'
-    ];
-    this.scriptLoaderService.loadScripts(scriptUrls).then(() => {
-      // Scripts have been loaded and executed.
-      // You can use the functionality provided by the scripts here.
-      this.runScriptFunction();
-    }).catch((error) => {
-      console.error('Error loading scripts:', error);
-    });
   }
-  runScriptFunction() {
-    // Call functions or perform actions from the loaded script
-    console.log('Script function executed.');
+
+  ngAfterViewInit(): void {
+    const scripts = [
+      "https://localhost:7159/files/cdn/js/jquery-3.4.1.min.js",
+      "https://localhost:7159/files/cdn/js/popper.min.js",
+      "https://localhost:7159/files/cdn/js/bootstrap.min.js",
+      "https://localhost:7159/files/cdn/js/owl.carousel.min.js",
+      "https://localhost:7159/files/cdn/js/jquery.animateNumber.min.js",
+      "https://localhost:7159/files/cdn/js/jquery.waypoints.min.js",
+      "https://localhost:7159/files/cdn/js/jquery.fancybox.min.js",
+      "https://localhost:7159/files/cdn/js/jquery.sticky.js",
+      "https://localhost:7159/files/cdn/js/aos.js",
+      "https://localhost:7159/files/cdn/js/custom.js",
+    ];
+    for (const script of scripts) {
+      const javascript = document.createElement('script');
+      javascript.src = script;
+      document.body.appendChild(javascript);
+    }
   }
 }

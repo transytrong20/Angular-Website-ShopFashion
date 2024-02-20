@@ -8,7 +8,7 @@ import { PangingCategoryModel, ShopProductModel } from 'src/app/Models/Shop-Serv
 })
 export class ShopService {
 
-  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/';
+  private baseUrl: string = 'https://localhost:7159/shop/data/';
 
   constructor(
     private http: HttpClient

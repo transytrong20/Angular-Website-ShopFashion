@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {
+  // AfterViewInit,
+  Component
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -9,7 +12,9 @@ import { ResetPasswordService } from 'src/app/services/resetPassword/reset-passw
   templateUrl: './forgot.component.html',
   styleUrls: ['./forgot.component.scss']
 })
-export class ForgotComponent {
+export class ForgotComponent
+// implements AfterViewInit 
+{
   public forgotForm!: FormGroup
   public resetPasswordEmail!: string
   public isValidEmail!: boolean
@@ -26,7 +31,11 @@ export class ForgotComponent {
       email: ['', Validators.required]
     })
   }
-
+  // ngAfterViewInit(): void {
+  //   const the = document.createElement('script');
+  //   the.src="duong dan den thu vien javascript";
+  //   document.body.appendChild(the);
+  // }
   checkValidEmail(event: string) {
     const value = event;
     const pattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/

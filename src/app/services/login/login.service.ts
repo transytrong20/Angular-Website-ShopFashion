@@ -9,7 +9,7 @@ import { TokenApiModel } from 'src/app/Models/token-api.model';
 })
 export class LoginService {
 
-  private baseUrl: string = 'https://aspnetcore6-api-shopfashion.azurewebsites.net/shop/data/'
+  private baseUrl: string = 'https://localhost:7159/shop/data/'
   private userPayload:any;
 
   constructor(

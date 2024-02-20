@@ -12,15 +12,15 @@
                         <div class="product__big__images">
                             <div class="portfolio-full-image tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
-                                    <img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + detailProduct.image"
+                                    <img [src]="'https://localhost:7159/' + detailProduct.image"
                                         alt="full-image">
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="img-tab-2">
-                                    <img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + detailProduct.image"
+                                    <img [src]="'https://localhost:7159/' + detailProduct.image"
                                         alt="full-image">
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="img-tab-3">
-                                    <img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + detailProduct.image"
+                                    <img [src]="'https://localhost:7159/' + detailProduct.image"
                                         alt="full-image">
                                 </div>
                             </div>
@@ -30,19 +30,19 @@
                         <ul class="product__small__images" role="tablist">
                             <li role="presentation" class="pot-small-img active">
                                 <a href="#img-tab-1" role="tab" data-toggle="tab">
-                                    <img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + detailProduct.image"
+                                    <img [src]="'https://localhost:7159/' + detailProduct.image"
                                         alt="small-image">
                                 </a>
                             </li>
                             <li role="presentation" class="pot-small-img">
                                 <a href="#img-tab-2" role="tab" data-toggle="tab">
-                                    <img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + detailProduct.image"
+                                    <img [src]="'https://localhost:7159/' + detailProduct.image"
                                         alt="small-image">
                                 </a>
                             </li>
                             <li role="presentation" class="pot-small-img">
                                 <a href="#img-tab-3" role="tab" data-toggle="tab">
-                                    <img [src]="'https://aspnetcore6-api-shopfashion.azurewebsites.net/' + detailProduct.image"
+                                    <img [src]="'https://localhost:7159/' + detailProduct.image"
                                         alt="small-image">
                                 </a>
                             </li>
@@ -76,7 +76,7 @@
                                 <p><span>Availability:</span> In Stock</p>
                             </div>
                             <div class="sin__desc align--left">
-                                <p><span>color:</span></p>
+                                <!-- <p><span>color:</span></p>
                                 <ul class="pro__color">
                                     <li class="red"><a href="#">red</a></li>
                                     <li class="green"><a href="#">green</a></li>
@@ -84,7 +84,7 @@
                                 </ul>
                                 <div class="pro__more__btn">
                                     <a href="#">more</a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="sin__desc align--left">
                                 <p><span>size</span></p>
@@ -106,20 +106,20 @@
                             </div>
 
                             <div class="input-group col-md-6 d-flex mb-3">
-                                <span class="input-group-btn mr-2">
+                                <!-- <span class="input-group-btn mr-2">
                                     <button type="button" class="quantity-left-minus btn" data-type="minus"
                                         data-field="">
                                         <i class="ion-ios-remove"></i>
                                     </button>
-                                </span>
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number"
+                                </span> -->
+                                <input style="width: 40%;" type="text" id="quantity" name="quantity" class="form-control input-number"
                                     value="1" min="1" max="100">
-                                <span class="input-group-btn ml-2">
+                                <!-- <span class="input-group-btn ml-2">
                                     <button type="button" class="quantity-right-plus btn" data-type="plus"
                                         data-field="">
                                         <i class="ion-ios-add"></i>
                                     </button>
-                                </span>
+                                </span> -->
                             </div> 
 
                             <p><a href="cart.html" class="btn btn-black py-3 px-5"
@@ -316,20 +316,20 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <div class="section__title--2 text-center">
+                <!-- <div class="section__title--2 text-center">
                     <h2 class="title__line">New Arrivals</h2>
                     <p>But I must explain to you how all this mistaken idea</p>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">
             <div class="product__wrap clearfix">
                 <!-- Start Single Product -->
-                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" >
+                <!-- <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" >
                     <div class="category">
                         <div class="ht__cat__thumb">
                             <a href="">
-                                <img src="https://aspnetcore6-api-shopfashion.azurewebsites.net/files/Men/S%E1%BA%A3n_ph%E1%BA%A9m_nam_11-AoNam.jpg"
+                                <img src="https://localhost:7159/files/Men/S%E1%BA%A3n_ph%E1%BA%A9m_nam_11-AoNam.jpg"
                                     alt="product images">
                             </a>
                         </div>
@@ -352,7 +352,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- End Single Product -->
             </div>
         </div>
